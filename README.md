@@ -1,5 +1,3 @@
-# NanoNm version 1.0.0
-
 # Integrated protocol for mapping 2’-O-Methylation using Nanopore direct RNA-seq data with NanoNm
 
 # Citation
