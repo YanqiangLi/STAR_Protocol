@@ -10,8 +10,8 @@ https://www.cell.com/molecular-cell/abstract/S1097-2765(24)00326-5
 
 # Dataset used in this protocal:
 
-dataset: 
-Human rRNA[1]:
+## Nanopore Dataset: 
+## Human rRNA:
 ```
 wget  https://sra-pub-src-1.s3.amazonaws.com/SRZ190740/HS_rRNA_dRNA_fast5.tar.gz.1 
 ```
@@ -19,7 +19,7 @@ Human IVT :
 ```
 wget https://sra-pub-src-1.s3.amazonaws.com/SRZ190744/IVT_Hs_mRNA_fast5.tar.gz.1  
 ```
-# Yeast  rRNA: 
+## Yeast  rRNA: 
 WT: 
 ```
 wget https://sra-pub-src-1.s3.amazonaws.com/SRZ190768/SC_rRNA_dRNA_fast5.tar.gz.1 
@@ -36,17 +36,21 @@ sno61KO:
 ```
 wget https://sra-pub-src-2.s3.amazonaws.com/ERR5317714/RNA475634.fast5.tar.gz.1
 ```
-# Fly rRNA: 
+## Fly rRNA: 
 ```
 wget ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR606/ERR6066014/FBL_KD_rep1.tar.gz
 wget ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR606/ERR6065782/NT_rep1.tar.gz
 ```
-# C4-2 mRNA, include rRNA: 
-```wget  https://sra-pub-src-1.s3.amazonaws.com/SRR20374459/nanopore_siCTRL_rep1.tar.gz.2 
+## Human prostate cancer cell line C4-2 mRNA, include rRNA: 
+```
+wget  https://sra-pub-src-1.s3.amazonaws.com/SRR20374459/nanopore_siCTRL_rep1.tar.gz.2 
 wget  https://sra-pub-src-1.s3.amazonaws.com/SRR20374458/nanopore_siCTRL_rep2.tar.gz.2
 wget https://sra-pub-src-1.s3.amazonaws.com/SRR20374457/nanopore_siFBL_rep1.tar.gz.2
 wget https://sra-pub-src-1.s3.amazonaws.com/SRR20374457/nanopore_siFBL_rep1.tar.gz.2 
 ```
+
+# Reference:
+
 
 # The Flowchart of NanoNm
 <p>Flowchart of a machine learning model to detect Nm based on Nanopore direct RNA-seq.</p>
