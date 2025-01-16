@@ -8,7 +8,8 @@ https://www.cell.com/molecular-cell/abstract/S1097-2765(24)00326-5
 
 # Dataset used in this protocal:
 
-## Nanopore Dataset: 
+## Nanopore Raw Datasets were as below:  please also download the necessery dataset from 10.5281/zenodo.14632831![image](https://github.com/user-attachments/assets/1c1fcae4-8f5b-4183-ae36-3df3ad8ce24a)
+ 
 ## Human rRNA:
 ```
 wget  https://sra-pub-src-1.s3.amazonaws.com/SRZ190740/HS_rRNA_dRNA_fast5.tar.gz.1 
