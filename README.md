@@ -9,7 +9,8 @@ https://www.cell.com/molecular-cell/abstract/S1097-2765(24)00326-5
 # Dataset used in this protocal:
 
 ## Nanopore Raw Datasets were as below:  please also download the necessery dataset from 10.5281/zenodo.14632831
-               
+        
+                       
 ## Human rRNA:
 ```
 wget  https://sra-pub-src-1.s3.amazonaws.com/SRZ190740/HS_rRNA_dRNA_fast5.tar.gz.1 
@@ -47,7 +48,10 @@ wget  https://sra-pub-src-1.s3.amazonaws.com/SRR20374458/nanopore_siCTRL_rep2.ta
 wget https://sra-pub-src-1.s3.amazonaws.com/SRR20374457/nanopore_siFBL_rep1.tar.gz.2
 wget https://sra-pub-src-1.s3.amazonaws.com/SRR20374457/nanopore_siFBL_rep1.tar.gz.2 
 ```
-# Reference:
+# Reference of dataset:
+Begik, O., Lucas, M.C., Pryszcz, L.P., Ramirez, J.M., Medina, R., Milenkovic, I., Cruciani, S., Liu, H., Vieira, H.G.S., Sas-Chen, A., et al. (2021). Quantitative profiling of pseudouridylation dynamics in native RNAs with nanopore sequencing. Nat Biotechnol 39, 1278-1291. 10.1038/s41587-021-00915-6.
+Sklias, A., Cruciani, S., Marchand, V., Spagnuolo, M., Lavergne, G., Bourguignon, V., Brambilla, A., Dreos, R., Marygold, S.J., Novoa, E.M., et al. (2024). Comprehensive map of ribosomal 2'-O-methylation and C/D box snoRNAs in Drosophila melanogaster. Nucleic Acids Res. 10.1093/nar/gkae139.
+Jenjaroenpun, P., Wongsurawat, T., Wadley, T.D., Wassenaar, T.M., Liu, J., Dai, Q., Wanchai, V., Akel, N.S., Jamshidi-Parsian, A., Franco, A.T., et al. (2021). Decoding the epitranscriptional landscape from native RNA sequences. Nucleic Acids Res 49, e7. 10.1093/nar/gkaa620.
 
 # The Flowchart of NanoNm
 <p>Flowchart of a machine learning model to detect Nm based on Nanopore direct RNA-seq.</p>
