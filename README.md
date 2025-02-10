@@ -9,6 +9,8 @@ https://www.cell.com/molecular-cell/abstract/S1097-2765(24)00326-5
 # Dataset used in this protocal:
 
 ## Nanopore Raw Datasets were as below:  please also download the necessery dataset from 10.5281/zenodo.14632831
+        
+        
  
 ## Human rRNA:
 ```
@@ -47,9 +49,7 @@ wget  https://sra-pub-src-1.s3.amazonaws.com/SRR20374458/nanopore_siCTRL_rep2.ta
 wget https://sra-pub-src-1.s3.amazonaws.com/SRR20374457/nanopore_siFBL_rep1.tar.gz.2
 wget https://sra-pub-src-1.s3.amazonaws.com/SRR20374457/nanopore_siFBL_rep1.tar.gz.2 
 ```
-
 # Reference:
-
 
 # The Flowchart of NanoNm
 <p>Flowchart of a machine learning model to detect Nm based on Nanopore direct RNA-seq.</p>
@@ -115,7 +115,68 @@ cat *.feature.feature.tsv >all.feature.tsv
 
 python predict_sites_Nm.final.py   --model ./model --cpu 20  -i all -o all_Nm_model -r  gencode.v27.transcripts.fa  -g GRCh38.p13.genome.fa  -b hg38.gene2transcripts.txt 
 
-``` 
+```
+
+# Step4. Map the 2'-O-methylation in the yeast rRNA
+```
+#!/bin/bash
+samples=("WT" "snoR60" "snoR61" "sno62")
+for id in "${samples[@]}"; do
+        gunzip "${id}_guppy.feature.feature.*.gz"
+    python ./NanoNm/predict_sites_Nm.yeast.py  --model ./NanoNm/model --cpu 20  -i ${id}_guppy.feature -o $id\_Nm_model -r  yeast.rRNA.fa  -g yeast.rRNA.fa -b yeast_rRNA.list
+        python ./script/ratio2bed.py $id\_Nm_model/ratio.0.5.tsv $id\_yeast
+ done
+
+```
+
+# Step5. Map the 2'-O-methylation in the fly rRNA
+```
+#!/bin/bash
+samples=("Fly_NT_rep1" "Fly_NT_rep2" "Fly_KD_rep1" "Fly_KD_rep2")
+for id in "${samples[@]}"; do
+        gunzip "${id}_guppy.feature.feature.*.gz"
+        python NanoNm/predict_sites_Nm.yeast.py  --model NanoNm/model --cpu 20  -i ${id}_guppy.feature -o $id\_Nm_model -r  fly.rRNA.fa  -g fly.rRNA.fa -b fly_rRNA.list
+    python ./script/ratio2bed.py $id\_Nm_model/ratio.0.5.tsv $id\_fly
+ done
+
+```
+
+# Step6. Map the 2'-O-methylation in rRNA of human nanopore test dataset
+
+```
+#!/bin/bash
+samples=("siCTRL_rRNA" "siFBL_rRNA")
+conda activate NanoNm
+for id in "${samples[@]}"; do
+    multi_to_single_fast5 -i "${id}.fast5" -s "$id" --recursive -t 40
+    guppy_basecaller --input_path "$id" --save_path "${id}_guppy" --num_callers 40 --recursive --fast5_out    --config rna_r9.4.1_70bps_hac.cfg --cpu_threads_per_caller 10
+    tombo resquiggle --rna --overwrite "${id}_guppy/workspace/" human.rRNA.fa --processes 40 --fit-global-scale --include-event-stdev
+    find "${id}_guppy/workspace/" -name "*.fast5" "${id}_guppy.list"
+    python ./NanoNm/extract_raw_and_feature_fast_AUCG.py --cpu=30 --fl="${id}_guppy.list" -o "${id}_guppy.feature" --clip=5
+python ./NanoNm/predict_sites_Nm.final.py --model /home/ch220806/2-O-Me/NanoNm/model --cpu 10 -i all -o rRNA_QC7 -r human.rRNA.fa   -g human.rRNA.fa  -b rRNA_gene2transcript.txt 2rRNA.QC7.err
+python ./scripts/ratio2bed.py  rRNA_QC7/ratio.0.5.tsv "$sample"
+done
+
+```
+
+
+# Step6. Map the 2'-O-methylation in mRNA of human nanopore test dataset
+
+```
+#!/bin/bash
+samples=("siCTRL_mRNA" "siFBL_mRNA")
+conda activate NanoNm
+for id in "${samples[@]}"; do
+     multi_to_single_fast5 -i "${id}.fast5" -s "$id" --recursive -t 40
+     guppy_basecaller --input_path "$id" --save_path "${id}_guppy" --num_callers 40 --recursive --fast5_out --config rna_r9.4.1_70bps_hac.cfg --cpu_threads_per_caller 10
+     find "${id}_guppy/workspace/" -name "*.fast5" "${id}_guppy.list"
+     python ./NanoNm/extract_raw_and_feature_fast_AUCG.py --cpu=30 --fl="${id}_guppy.list" -o "$id" --clip=5
+     python ./NanoNm/predict_sites_Nm.final.py --model ./model -i "$id" -o "${id}_Nm_model" -r  gencode.v27.transcripts.fa -g GRCh38.p13.genome.fa -b hg38.gene2transcripts1.txt
+    python ./script/ratio2bed.py  "${id}_Nm_model/ratio.0.5.tsv" siCTRL_mRNA
+done
+
+```
+
 # Contact
 Yanqiang.Li@childrens.harvard.edu
 
