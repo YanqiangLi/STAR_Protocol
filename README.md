@@ -160,7 +160,7 @@ done
 ```
 
 
-# Step6. Map the 2'-O-methylation in mRNA of human nanopore test dataset
+# Step7. Map the 2'-O-methylation in mRNA of human nanopore test dataset
 
 ```
 #!/bin/bash
