@@ -9,9 +9,7 @@ https://www.cell.com/molecular-cell/abstract/S1097-2765(24)00326-5
 # Dataset used in this protocal:
 
 ## Nanopore Raw Datasets were as below:  please also download the necessery dataset from 10.5281/zenodo.14632831
-        
-        
- 
+               
 ## Human rRNA:
 ```
 wget  https://sra-pub-src-1.s3.amazonaws.com/SRZ190740/HS_rRNA_dRNA_fast5.tar.gz.1 
@@ -114,7 +112,6 @@ cat *.feature.feature.fa >all.feature.fa
 cat *.feature.feature.tsv >all.feature.tsv 
 
 python predict_sites_Nm.final.py   --model ./model --cpu 20  -i all -o all_Nm_model -r  gencode.v27.transcripts.fa  -g GRCh38.p13.genome.fa  -b hg38.gene2transcripts.txt 
-
 ```
 
 # Step4. Map the 2'-O-methylation in the yeast rRNA
@@ -126,7 +123,6 @@ for id in "${samples[@]}"; do
     python ./NanoNm/predict_sites_Nm.yeast.py  --model ./NanoNm/model --cpu 20  -i ${id}_guppy.feature -o $id\_Nm_model -r  yeast.rRNA.fa  -g yeast.rRNA.fa -b yeast_rRNA.list
         python ./script/ratio2bed.py $id\_Nm_model/ratio.0.5.tsv $id\_yeast
  done
-
 ```
 
 # Step5. Map the 2'-O-methylation in the fly rRNA
@@ -138,7 +134,6 @@ for id in "${samples[@]}"; do
         python NanoNm/predict_sites_Nm.yeast.py  --model NanoNm/model --cpu 20  -i ${id}_guppy.feature -o $id\_Nm_model -r  fly.rRNA.fa  -g fly.rRNA.fa -b fly_rRNA.list
     python ./script/ratio2bed.py $id\_Nm_model/ratio.0.5.tsv $id\_fly
  done
-
 ```
 
 # Step6. Map the 2'-O-methylation in rRNA of human nanopore test dataset
@@ -156,7 +151,6 @@ for id in "${samples[@]}"; do
 python ./NanoNm/predict_sites_Nm.final.py --model /home/ch220806/2-O-Me/NanoNm/model --cpu 10 -i all -o rRNA_QC7 -r human.rRNA.fa   -g human.rRNA.fa  -b rRNA_gene2transcript.txt 2rRNA.QC7.err
 python ./scripts/ratio2bed.py  rRNA_QC7/ratio.0.5.tsv "$sample"
 done
-
 ```
 
 
@@ -174,7 +168,6 @@ for id in "${samples[@]}"; do
      python ./NanoNm/predict_sites_Nm.final.py --model ./model -i "$id" -o "${id}_Nm_model" -r  gencode.v27.transcripts.fa -g GRCh38.p13.genome.fa -b hg38.gene2transcripts1.txt
     python ./script/ratio2bed.py  "${id}_Nm_model/ratio.0.5.tsv" siCTRL_mRNA
 done
-
 ```
 
 # Contact
