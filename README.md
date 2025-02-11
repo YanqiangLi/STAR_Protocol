@@ -197,7 +197,6 @@ done
 python ./scripts/merge_mRNA.py siCTRL_mRNA.filter.bed siFBL_mRNA.filter.bed Human_mRNA.ratio.txt
 python ./scripts/merge_human.rRNA.py human.rRNA.Nm.bed siCTRL_rRNA.filter.bed siFBL_rRNA.filter.bed Human_rRNA.ratio.txt
 Rscript ./scripts/Human_siFBL_siCTRL_rRNA_mRNA.plot.R
-
 ```
 # Contact
 Yanqiang.Li@childrens.harvard.edu
