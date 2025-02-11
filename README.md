@@ -10,9 +10,12 @@ https://www.cell.com/molecular-cell/abstract/S1097-2765(24)00326-5
 
 ## Nanopore Raw Datasets were as below (this dataset is large and optional for STAR Protocal):  please also download the necessery dataset such as example_data.zip of test fast5 for human rRNA and mRNA dataset, and feature files of yeast and fly in Yeast_Fly_feature_dataset.zip from 10.5281/zenodo.14632831
         
+## Download with wget:
+>wget https://zenodo.org/records/14632831/files/rRNA.zip?download=1 
+>wget https://zenodo.org/records/14632831/files/example_data.zip?download=1
+>wget https://zenodo.org/records/14632831/files/Yeast_Fly_feature_dataset.zip?download=1 
         
-        
-                       
+## Below is optional:              
 ## Human rRNA:
 ```
 wget  https://sra-pub-src-1.s3.amazonaws.com/SRZ190740/HS_rRNA_dRNA_fast5.tar.gz.1 
