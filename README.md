@@ -10,6 +10,8 @@ https://www.cell.com/molecular-cell/abstract/S1097-2765(24)00326-5
 
 Nanopore Raw Datasets were as below (this dataset is large and optional for STAR Protocal):  please also download the necessery dataset such as example_data.zip of test fast5 for human rRNA and mRNA dataset, and feature files of yeast and fly in Yeast_Fly_feature_dataset.zip from 10.5281/zenodo.14632831
         
+        
+        
 ## Download with wget:
 ```
 wget https://zenodo.org/records/14632831/files/rRNA.zip?download=1
@@ -59,9 +61,15 @@ wget https://sra-pub-src-1.s3.amazonaws.com/SRR20374457/nanopore_siFBL_rep1.tar.
 wget https://sra-pub-src-1.s3.amazonaws.com/SRR20374457/nanopore_siFBL_rep1.tar.gz.2 
 ```
 # Reference of dataset:
-1. Begik, O., Lucas, M.C., Pryszcz, L.P., Ramirez, J.M., Medina, R., Milenkovic, I., Cruciani, S., Liu, H., Vieira, H.G.S., Sas-Chen, A., et al. (2021). Quantitative profiling of pseudouridylation dynamics in native RNAs with nanopore sequencing. Nat Biotechnol 39, 1278-1291. 10.1038/s41587-021-00915-6     
+1. Begik, O., Lucas, M.C., Pryszcz, L.P., Ramirez, J.M., Medina, R., Milenkovic, I., Cruciani, S., Liu, H., Vieira, H.G.S., Sas-Chen, A., et al. (2021). Quantitative profiling of pseudouridylation dynamics in native RNAs with nanopore sequencing. Nat Biotechnol 39, 1278-1291. 10.1038/s41587-021-00915-6
+        
+             
 2. Sklias, A., Cruciani, S., Marchand, V., Spagnuolo, M., Lavergne, G., Bourguignon, V., Brambilla, A., Dreos, R., Marygold, S.J., Novoa, E.M., et al. (2024). Comprehensive map of ribosomal 2'-O-methylation and C/D box snoRNAs in Drosophila melanogaster. Nucleic Acids Res. 10.1093/nar/gkae139
+        
+        
 3. Jenjaroenpun, P., Wongsurawat, T., Wadley, T.D., Wassenaar, T.M., Liu, J., Dai, Q., Wanchai, V., Akel, N.S., Jamshidi-Parsian, A., Franco, A.T., et al. (2021). Decoding the epitranscriptional landscape from native RNA sequences. Nucleic Acids Res 49, e7. 10.1093/nar/gkaa620
+        
+        
 
 
 # The Flowchart of NanoNm
@@ -185,6 +193,14 @@ for id in "${samples[@]}"; do
 done
 ```
 
+# Step8. Combine the rRNA and mRNA ratio files from the two samples, siFBL and siCTRL
+
+```
+python ./scripts/merge_mRNA.py siCTRL_mRNA.filter.bed siFBL_mRNA.filter.bed Human_mRNA.ratio.txt
+python ./scripts/merge_human.rRNA.py human.rRNA.Nm.bed siCTRL_rRNA.filter.bed siFBL_rRNA.filter.bed Human_rRNA.ratio.txt
+Rscript ./scripts/Human_siFBL_siCTRL_rRNA_mRNA.plot.R
+
+```
 # Contact
 Yanqiang.Li@childrens.harvard.edu
 
