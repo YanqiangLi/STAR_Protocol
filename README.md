@@ -6,9 +6,13 @@ If using the software in a publication, please cite the following:
 Yanqiang Li et.al 2′-O-methylation at internal sites on mRNA promotes mRNA stability. Molecular Cell (2024)
 https://www.cell.com/molecular-cell/abstract/S1097-2765(24)00326-5
 
-# Dataset used in this protocal:
+# Dataset used in this protocol:
 
-Please download the necessery dataset such as example_data.zip of test fast5 for human rRNA and mRNA dataset, and feature files of yeast and fly in Yeast_Fly_feature_dataset.zip from 10.5281/zenodo.14632831(wget command also supported as below). Nanopore Raw Datasets were also listed as below (These dataset are large and optional for STAR Protocal): 
+Please download the necessery dataset such as example_data.zip of test fast5 for human rRNA and mRNA dataset, and feature files of yeast and fly in Yeast_Fly_feature_dataset.zip from 10.5281/zenodo.14632831(wget
+        
+        
+        
+         command also supported as below). Nanopore Raw Datasets were also listed as below (These dataset are large and optional for STAR Protocol): 
         
 ## Download the necessery dataset with wget:
 ```
@@ -61,11 +65,23 @@ wget https://sra-pub-src-1.s3.amazonaws.com/SRR20374457/nanopore_siFBL_rep1.tar.
 # Reference of dataset:
 1. Begik, O., Lucas, M.C., Pryszcz, L.P., Ramirez, J.M., Medina, R., Milenkovic, I., Cruciani, S., Liu, H., Vieira, H.G.S., Sas-Chen, A., et al. (2021). Quantitative profiling of pseudouridylation dynamics in native RNAs with nanopore sequencing. Nat Biotechnol 39, 1278-1291. 10.1038/s41587-021-00915-6
         
+        
+        
+        
+        
              
 2. Sklias, A., Cruciani, S., Marchand, V., Spagnuolo, M., Lavergne, G., Bourguignon, V., Brambilla, A., Dreos, R., Marygold, S.J., Novoa, E.M., et al. (2024). Comprehensive map of ribosomal 2'-O-methylation and C/D box snoRNAs in Drosophila melanogaster. Nucleic Acids Res. 10.1093/nar/gkae139
         
         
+        
+        
+        
+        
 3. Jenjaroenpun, P., Wongsurawat, T., Wadley, T.D., Wassenaar, T.M., Liu, J., Dai, Q., Wanchai, V., Akel, N.S., Jamshidi-Parsian, A., Franco, A.T., et al. (2021). Decoding the epitranscriptional landscape from native RNA sequences. Nucleic Acids Res 49, e7. 10.1093/nar/gkaa620
+        
+        
+        
+        
         
         
 
