@@ -23,6 +23,7 @@ wget https://zenodo.org/records/14632831/files/Yeast_Fly_feature_dataset.zip?dow
 ## Below are optional:              
 ## Human rRNA:
 ```
+cd raw_data
 wget  https://sra-pub-src-1.s3.amazonaws.com/SRZ190740/HS_rRNA_dRNA_fast5.tar.gz.1 
 ```
 Human IVT : 
