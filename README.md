@@ -179,7 +179,7 @@ cd Yeast_Fly_feature_dataset
 samples=("WT" "snoR60" "snoR61" "sno62")
 for id in "${samples[@]}"; do
         gunzip "${id}_guppy.feature.feature.*.gz"
-    python ../NanoNm/predict_sites_Nm.yeast.py  --model ../NanoNm/model --cpu 20  -i ${id}_guppy.feature -o $id\_Nm_model -r  ../rRNA/yeast.rRNA.fa  -g ../rRNA/yeast.rRNA.fa -b ../rRNA/yeast_rRNA.list
+    python ../NanoNm/predict_sites_Nm.final.py  --model ../NanoNm/model --cpu 20  -i ${id}_guppy.feature -o $id\_Nm_model -r  ../rRNA/yeast.rRNA.fa  -g ../rRNA/yeast.rRNA.fa -b ../rRNA/yeast_rRNA.list
         python ../script/ratio2bed.py $id\_Nm_model/ratio.0.5.tsv $id\_yeast
  done
 ```
@@ -191,7 +191,7 @@ cd Yeast_Fly_feature_dataset
 samples=("Fly_NT_rep1" "Fly_NT_rep2" "Fly_KD_rep1" "Fly_KD_rep2")
 for id in "${samples[@]}"; do
         gunzip "${id}_guppy.feature.feature.*.gz"
-        python NanoNm/predict_sites_Nm.yeast.py  --model ../NanoNm/model --cpu 20  -i ${id}_guppy.feature -o $id\_Nm_model -r  ../rRNA/fly.rRNA.fa  -g ../rRNA/fly.rRNA.fa -b ../rRNA/fly_rRNA.list
+        python NanoNm/predict_sites_Nm.final.py  --model ../NanoNm/model --cpu 20  -i ${id}_guppy.feature -o $id\_Nm_model -r  ../rRNA/fly.rRNA.fa  -g ../rRNA/fly.rRNA.fa -b ../rRNA/fly_rRNA.list
     python ./script/ratio2bed.py $id\_Nm_model/ratio.0.5.tsv $id\_fly
  done
 ```
