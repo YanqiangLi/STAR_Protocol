@@ -8,7 +8,16 @@ https://www.cell.com/molecular-cell/abstract/S1097-2765(24)00326-5
 
 # Dataset used in this protocol:
 
-Please download the necessery dataset such as example_data.zip of test fast5 for human rRNA and mRNA dataset, and feature files of yeast and fly in Yeast_Fly_feature_dataset.zip from 10.5281/zenodo.14632831      (wget command also supported as below). Nanopore Raw Datasets were also listed as below (These dataset are large and optional for STAR Protocol): 
+Please download the necessery dataset such as example_data.zip of test fast5 for human rRNA and mRNA dataset, and feature files of yeast and fly in Yeast_Fly_feature_dataset.zip from 10.5281/zenodo.14632831  (wget command also supported as below). 
+The description of these folders are as below: 
+./genome: The folder used to store genome and annotation files for the Nm detection in mRNA.
+./raw_data: The folder used to store the raw data of fast5 files downloaded for the processing.
+./example_data: The toy fast5 files of human mRNA and rRNA used for the star protocol.
+./rRNA: The rRNA information for human, yeast and fly.
+./scripts: Custom scripts for star protocols from https://github.com/kaifuchenlab/STAR_Protocol/.
+./Yeast_Fly_feature_dataset: The processed feature dataset for yeast and fly.
+
+Nanopore Raw Datasets were also listed as below (These dataset are large and optional for STAR Protocol): 
         
 ## Download the necessery dataset with wget:
 ```
