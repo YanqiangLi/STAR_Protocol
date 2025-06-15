@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/592c6eea-dfdd-4adf-a4f6-a83b979e83af)# Integrated protocol for mapping 2’-O-Methylation using Nanopore direct RNA-seq data with NanoNm
+# Integrated protocol for mapping 2’-O-Methylation using Nanopore direct RNA-seq data with NanoNm
 
 # Citation
 If using the software in a publication, please cite the following:
@@ -169,7 +169,7 @@ cat *.feature.feature.fa >all.feature.fa
 
 cat *.feature.feature.tsv >all.feature.tsv 
 
-python predict_sites_Nm.final.py   --model ../NanoNm/model --cpu 20  -i all -o all_Nm_model -r  ../genome/gencode.v27.transcripts.fa  -g ../genome/GRCh38.p13.genome.fa  -b ../genome/hg38.gene2transcripts.txt 
+python ../NanoNm/predict_sites_Nm.final.py   --model ../NanoNm/model --cpu 20  -i all -o all_Nm_model -r  ../genome/gencode.v27.transcripts.fa  -g ../genome/GRCh38.p13.genome.fa  -b ../genome/hg38.gene2transcripts.txt 
 ```
 
 # Step4. Map the 2'-O-methylation in the yeast rRNA
@@ -179,7 +179,7 @@ cd Yeast_Fly_feature_dataset
 samples=("WT" "snoR60" "snoR61" "sno62")
 for id in "${samples[@]}"; do
         gunzip "${id}_guppy.feature.feature.*.gz"
-    python ./NanoNm/predict_sites_Nm.yeast.py  --model ./NanoNm/model --cpu 20  -i ${id}_guppy.feature -o $id\_Nm_model -r  ../rRNA/yeast.rRNA.fa  -g ../rRNA/yeast.rRNA.fa -b ../rRNA/yeast_rRNA.list
+    python ../NanoNm/predict_sites_Nm.yeast.py  --model ../NanoNm/model --cpu 20  -i ${id}_guppy.feature -o $id\_Nm_model -r  ../rRNA/yeast.rRNA.fa  -g ../rRNA/yeast.rRNA.fa -b ../rRNA/yeast_rRNA.list
         python ../script/ratio2bed.py $id\_Nm_model/ratio.0.5.tsv $id\_yeast
  done
 ```
@@ -227,7 +227,7 @@ for id in "${samples[@]}"; do
      guppy_basecaller --input_path "$id" --save_path "${id}_guppy" --num_callers 40 --recursive --fast5_out --config rna_r9.4.1_70bps_hac.cfg --cpu_threads_per_caller 10
      find "${id}_guppy/workspace/" -name "*.fast5" "${id}_guppy.list"
      python ../NanoNm/extract_raw_and_feature_fast_AUCG.py --cpu=30 --fl="${id}_guppy.list" -o "$id" --clip=5
-     python ../NanoNm/predict_sites_Nm.final.py --model ./model -i "$id" -o "${id}_Nm_model" -r  ../genome/gencode.v27.transcripts.fa -g ../genome/GRCh38.p13.genome.fa -b ../genome/hg38.gene2transcripts1.txt
+     python ../NanoNm/predict_sites_Nm.final.py --model ../NanoNm/model -i "$id" -o "${id}_Nm_model" -r  ../genome/gencode.v27.transcripts.fa -g ../genome/GRCh38.p13.genome.fa -b ../genome/hg38.gene2transcripts1.txt
     python ../script/ratio2bed.py  "${id}_Nm_model/ratio.0.5.tsv" siCTRL_mRNA
 done
 ```
